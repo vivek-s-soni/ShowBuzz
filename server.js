@@ -1,9 +1,30 @@
-const express = require("express");
+const http = require("http");
+const db = require("./db/database");
 
-const app = express();
+const server = http.createServer((req, res) => {
 
-app.get("/", (req, res) => {
-  res.send("Krish Server Running 🚀");
+    if (req.url === "/add" && req.method === "POST") {
+        let body = "";
+        req.on("data", chunk => body += chunk);
+
+        req.on("end", () => {
+            const data = JSON.parse(body);
+
+            db.run("INSERT INTO shows(name,rating) VALUES(?,?)",
+                [data.name, data.rating],
+                () => {
+                    res.end("Show Added");
+                }
+            );
+        });
+    }
+
+    else if (req.url === "/shows") {
+        db.all("SELECT * FROM shows", (err, rows) => {
+            res.end(JSON.stringify(rows));
+        });
+    }
+
 });
 
-app.listen(3000, () => console.log("Server started on 3000"));
+server.listen(3000, () => console.log("Server running"));
