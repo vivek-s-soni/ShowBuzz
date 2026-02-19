@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - ShowBuzz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h1 {
+            color: #f84464;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .faq-header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #f84464;
+            color: white;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+
+        .accordion-button:focus {
+            border-color: #f84464;
+            box-shadow: 0 0 0 0.25rem rgba(248, 68, 100, 0.25);
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-body {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category h3 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f84464;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f84464 0%, #e53353 100%);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            width: 25px;
+        }
+
+        .back-button {
+            margin-bottom: 30px;
+        }
+
+        .back-button a {
+            color: #f84464;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-button a:hover {
+            color: #e53353;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav_bar">
+        <div class="left">
+            <a href="main.html" style="text-decoration:none; display:inline-block;">
+                <img src="Showbuzz.png" alt="ShowBuzz" style="height:36px; margin-left:8px; vertical-align:middle; cursor:pointer;">
+            </a>
+            <h4 style="color: white; margin: 0; font-size: 24px;">Help & Support</h4>
+        </div>
+        <div class="right">
+            <a href="main.html" class="btn btn-primary">Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="faq-section">
+        <div class="faq-header">
+            <h1><i class="fa fa-question-circle"></i> Frequently Asked Questions</h1>
+            <p>Find answers to common questions about ShowBuzz</p>
+        </div>
+
+        <!-- Booking & Tickets -->
+        <div class="faq-category">
+            <h3><i class="fa fa-ticket"></i> Booking & Tickets</h3>
+            <div class="accordion" id="bookingAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking1">
+                            How do I book a ticket on ShowBuzz?
+                        </button>
+                    </h2>
+                    <div id="booking1" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                        <div class="accordion-body">
+                            <strong>Step-by-step booking process:</strong>
+                            <ol>
+                                <li>Sign in to your ShowBuzz account</li>
+                                <li>Select a movie, comedy show, or live event</li>
+                                <li>Choose your preferred theatre and date</li>
+                                <li>Select your seats</li>
+                                <li>Proceed to payment and complete the transaction</li>
+                                <li>Your e-ticket will be generated instantly</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking2">
+                            What payment methods do you accept?
+                        </button>
+                    </h2>
+                    <div id="booking2" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                        <div class="accordion-body">
+                            ShowBuzz accepts the following payment methods:
+                            <ul>
+                                <li>Credit Cards (Visa, MasterCard, American Express)</li>
+                                <li>Debit Cards</li>
+                                <li>Net Banking</li>
+                                <li>UPI (Google Pay, Apple Pay, PhonePe, Paytm)</li>
+                                <li>Digital Wallets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking3">
+                            Can I modify or cancel my booking?
+                        </button>
+                    </h2>
+                    <div id="booking3" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                        <div class="accordion-body">
+                            <strong>Modification/Cancellation Policy:</strong>
+                            <ul>
+                                <li>Bookings can be modified up to 3 hours before the show time</li>
+                                <li>Cancellations made 24 hours before the show will receive a 90% refund</li>
+                                <li>Cancellations made less than 24 hours before will receive a 50% refund</li>
+                                <li>No refunds on cancellations made less than 1 hour before the show</li>
+                            </ul>
+                            Contact support for assistance with modifications or cancellations.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking4">
+                            What should I do with my e-ticket?
+                        </button>
+                    </h2>
+                    <div id="booking4" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                        <div class="accordion-body">
+                            <strong>E-Ticket Guidelines:</strong>
+                            <ul>
+                                <li>Your e-ticket is available immediately after payment confirmation</li>
+                                <li>Download and save the PDF or take a screenshot</li>
+                                <li>Display the QR code at the venue entrance</li>
+                                <li>No need to print the ticket - digital display is sufficient</li>
+                                <li>Keep your ticket until after the show for reference</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account & Profile -->
+        <div class="faq-category">
+            <h3><i class="fa fa-user"></i> Account & Profile</h3>
+            <div class="accordion" id="accountAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#account1">
+                            How do I create a ShowBuzz account?
+                        </button>
+                    </h2>
+                    <div id="account1" class="accordion-collapse collapse" data-bs-parent="#accountAccordion">
+                        <div class="accordion-body">
+                            <strong>To create an account:</strong>
+                            <ol>
+                                <li>Click on "Sign Up" on the home page</li>
+                                <li>Enter your full name, email, mobile number, and age</li>
+                                <li>Create a strong password</li>
+                                <li>Click "Sign Up" to create your account</li>
+                                <li>You can now log in and start booking</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#account2">
+                            How do I reset my password?
+                        </button>
+                    </h2>
+                    <div id="account2" class="accordion-collapse collapse" data-bs-parent="#accountAccordion">
+                        <div class="accordion-body">
+                            Currently, password reset is not available online. Please contact our support team for password reset assistance:
+                            <ul>
+                                <li>Email: support@showbuzz.com</li>
+                                <li>Phone: +91 1800-123-4567</li>
+                            </ul>
+                            We'll help you regain access to your account quickly and securely.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#account3">
+                            Can I update my profile information?
+                        </button>
+                    </h2>
+                    <div id="account3" class="accordion-collapse collapse" data-bs-parent="#accountAccordion">
+                        <div class="accordion-body">
+                            You can view your profile information anytime by clicking "My Profile" in the hamburger menu. 
+                            To update profile details, please contact our support team.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events & Content -->
+        <div class="faq-category">
+            <h3><i class="fa fa-film"></i> Events & Content</h3>
+            <div class="accordion" id="contentAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content1">
+                            What events are available on ShowBuzz?
+                        </button>
+                    </h2>
+                    <div id="content1" class="accordion-collapse collapse" data-bs-parent="#contentAccordion">
+                        <div class="accordion-body">
+                            ShowBuzz offers tickets for:
+                            <ul>
+                                <li><strong>Movies:</strong> Latest releases and popular films</li>
+                                <li><strong>Stand-up Comedy:</strong> Comedy shows and comedy events</li>
+                                <li><strong>Live Events:</strong> Concerts, theater shows, and special events</li>
+                            </ul>
+                            New events are added regularly. Check the app frequently for latest bookings!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content2">
+                            How far in advance can I book tickets?
+                        </button>
+                    </h2>
+                    <div id="content2" class="accordion-collapse collapse" data-bs-parent="#contentAccordion">
+                        <div class="accordion-body">
+                            Booking windows vary by event:
+                            <ul>
+                                <li><strong>Movies:</strong> 2-4 weeks in advance</li>
+                                <li><strong>Comedy Shows:</strong> 1-3 weeks in advance</li>
+                                <li><strong>Live Events:</strong> Typically 2-6 weeks in advance</li>
+                            </ul>
+                            Early booking is recommended to get your preferred seats and timings.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content3">
+                            Can I choose my specific seats?
+                        </button>
+                    </h2>
+                    <div id="content3" class="accordion-collapse collapse" data-bs-parent="#contentAccordion">
+                        <div class="accordion-body">
+                            Yes! ShowBuzz offers an interactive seat selection feature. During booking, you can:
+                            <ul>
+                                <li>View the theatre layout in real-time</li>
+                                <li>Select your preferred seats</li>
+                                <li>See prices for different seat categories</li>
+                                <li>Choose multiple seats for group bookings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Issues -->
+        <div class="faq-category">
+            <h3><i class="fa fa-laptop"></i> Technical Issues</h3>
+            <div class="accordion" id="techAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech1">
+                            What should I do if I'm having trouble logging in?
+                        </button>
+                    </h2>
+                    <div id="tech1" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                        <div class="accordion-body">
+                            If you're having login issues:
+                            <ol>
+                                <li>Verify your email and password are correct</li>
+                                <li>Clear your browser cache and cookies</li>
+                                <li>Try using a different browser</li>
+                                <li>Try on a different device</li>
+                                <li>Contact support if the issue persists</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech2">
+                            The website is not loading properly. What should I do?
+                        </button>
+                    </h2>
+                    <div id="tech2" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                        <div class="accordion-body">
+                            Try these troubleshooting steps:
+                            <ul>
+                                <li>Refresh the page (Ctrl+R or Cmd+R)</li>
+                                <li>Clear browser cache and cookies</li>
+                                <li>Disable browser extensions/plugins</li>
+                                <li>Try a different browser or device</li>
+                                <li>Check your internet connection</li>
+                                <li>Contact support if problems continue</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech3">
+                            Payment failed but money was deducted. What do I do?
+                        </button>
+                    </h2>
+                    <div id="tech3" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                        <div class="accordion-body">
+                            <strong>Don't worry!</strong> Transaction reversals are automatic and typically take:
+                            <ul>
+                                <li><strong>Credit/Debit Cards:</strong> 3-5 business days</li>
+                                <li><strong>Net Banking:</strong> 2-3 business days</li>
+                                <li><strong>UPI:</strong> 1-2 hours</li>
+                            </ul>
+                            If the amount isn't reversed within the expected timeframe, please contact support with your transaction ID.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h3><i class="fa fa-headset"></i> Still Need Help?</h3>
+            <p>Our customer support team is here to assist you 24/7</p>
+            <div class="contact-item">
+                <i class="fa fa-envelope"></i>
+                <span>Email: support@showbuzz.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fa fa-phone"></i>
+                <span>Phone: +91 1800-123-4567</span>
+            </div>
+            <div class="contact-item">
+                <i class="fa fa-clock"></i>
+                <span>Available: Monday - Sunday, 9 AM - 11 PM IST</span>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="https://www.facebook.com/showbuzz" target="_blank" style="color: white; margin: 0 10px;"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.twitter.com/showbuzz" target="_blank" style="color: white; margin: 0 10px;"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.instagram.com/showbuzz" target="_blank" style="color: white; margin: 0 10px;"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ShowBuzz</h3>
+                <p>Your ultimate destination for booking movie tickets, live events, and entertainment experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="main.html">Home</a>
+                <a href="help.html">Help & Support</a>
+                <a href="login.html">Login</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item" style="color: #666;">
+                    <i class="fa fa-envelope"></i>
+                    <span>support@showbuzz.com</span>
+                </div>
+                <div class="contact-item" style="color: #666;">
+                    <i class="fa fa-phone"></i>
+                    <span>+91 1800-123-4567</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShowBuzz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
