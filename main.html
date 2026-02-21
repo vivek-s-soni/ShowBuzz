@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowBuzz</title>
+  <link rel="stylesheet" href="index.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="booking.js"></script>
+  <!-- jsPDF for PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* enable smooth scrolling for in-page anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="nav_bar">
+    <div class="left">
+      <a href="about.html" style="text-decoration:none; display:inline-block;">
+        <img src="Showbuzz.png" alt="ShowBuzz"
+          style="height:36px; margin-left:8px; vertical-align:middle; cursor:pointer;">
+      </a>
+      <input type="text" id="searchInput" placeholder="Search movies, events, comedy" style="margin-left:8px;">
+    </div>
+    <div class="right">
+      <h4 class="loc">
+        <select class="loc">
+          <option>Ahmedabad</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Bangalore</option>
+          <option>Pune</option>
+          <option>Chennai</option>
+        </select>
+      </h4>
+      <a id="signInBtn" class="btn btn-primary" href="#">Sign In</a>
+      <div class="menu-container">
+        <i class="menu" id="hamburgerBtn"><i class="fa fa-bars" aria-hidden="true"></i></i>
+        <div class="hamburger-menu" id="hamburgerMenu">
+          <a href="#" class="menu-item"><i class="fa fa-user"></i> My Profile</a>
+          <a href="#" class="menu-item"><i class="fa fa-ticket"></i> My Bookings</a>
+          <a href="#" class="menu-item"><i class="fa fa-bell"></i> Notifications</a>
+          <a href="#" class="menu-item"><i class="fa fa-headset"></i> Help & Support</a>
+          <hr class="menu-divider">
+          <a href="#" class="menu-item logout" id="logoutBtn"><i class="fa fa-sign-out"></i> Logout</a>
+          <a href="#" class="menu-item text-danger" onclick="deleteAccount()">
+            <i class="fa fa-trash"></i> Delete Account
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- central brand removed; small logo moved into nav for compact layout -->
+
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover">
+
+
+    <div class="carousel-indicators">
+
+      <button data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+      <button data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img src="HoneySingh.jpeg" class="d-block w-100" style="height:400px;" alt="First slide image description">
+      </div>
+
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="AP Dhillon.jpeg" class="d-block w-100" style="height:400px" alt="Second slide image description">
+      </div>
+
+
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="Messi.jpeg" class="d-block w-100" style="height:400px" alt="Third slide image description">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div><br><br>
+
+  <div id="movies" class="container">
+    <h2>Recommended Movies</h2><br><br>
+
+    <div class="cards">
+
+      <div class="card" data-name="Dhurandhar" data-bs-toggle="modal" data-bs-target="#movie1Modal"
+        data-category="movies">
+        <img src="Dhurandar.jpeg" alt="Dhurandhar">
+        <button>
+          <i class="fa-solid fa-thumbs-up" style="color:#22d36f">1.1M Likes</i>
+          <h5>Dhurandhar</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="movie1Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Dhurandhar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <!-- Trailer -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BKOVzHcjEIo?si=IOma_Onxmi8-YlEc"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+
+              <br>
+
+              <!-- Description -->
+              <p>
+                Dhurandhar is an action thriller movie. Experience intense drama,
+                powerful performances and thrilling action sequences.
+              </p>
+
+              <p><b>Language:</b> Hindi</p>
+              <p><b>Genre:</b> Action / Thriller</p>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="openBooking('Dhurandhar')">
+                Book Tickets
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="card" data-name="Chhavva" data-bs-toggle="modal" data-bs-target="#movie2Modal" data-category="movies">
+        <img src="Chhaava.jpeg" alt="Chhavva">
+        <button>
+          <i class="fa-solid fa-thumbs-up" style="color:#22d36f">1.1M Likes</i>
+          <h5>Chhavva</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="movie2Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Chhavva</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <!-- Trailer -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hs3w32RG8L8?si=1Rux1eANsQ2bHi63"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+
+              <br>
+
+              <!-- Description -->
+              <p>
+                Dhurandhar is an action thriller movie. Experience intense drama,
+                powerful performances and thrilling action sequences.
+              </p>
+
+              <p><b>Language:</b> Hindi</p>
+              <p><b>Genre:</b> Action / Thriller</p>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="openBooking('chhaava')">
+                Book Tickets
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card" data-name="Border 2" data-bs-toggle="modal" data-bs-target="#movie3Modal"
+        data-category="movies">
+        <img src="Border2.jpeg" alt="Border 2">
+        <button>
+          <i class="fa-solid fa-thumbs-up" style="color:#22d36f">1.1M Likes</i>
+          <h5>Border 2</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="movie3Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Border 2</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <!-- Trailer -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nvmc2ECk8Lo?si=R4R90gEZWAbbZxJP"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+
+              <br>
+
+              <!-- Description -->
+              <p>
+                Dhurandhar is an action thriller movie. Experience intense drama,
+                powerful performances and thrilling action sequences.
+              </p>
+
+              <p><b>Language:</b> Hindi</p>
+              <p><b>Genre:</b> Action / Thriller</p>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="openBooking('BORDER 2')">
+                Book Tickets
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>`
+
+
+
+      <div class="card" data-name="F1" data-bs-toggle="modal" data-bs-target="#movie4Modal" data-category="movies">
+        <img src="F1.jpeg" alt="F1">
+        <button>
+          <i class="fa-solid fa-thumbs-up" style="color:#22d36f">1.1M Likes</i>
+          <h5>F1</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="movie4Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">F1</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <!-- Trailer -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/69ffwl-8pCU?si=jOEMI4u99s4UYA-H"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+
+              <br>
+
+              <!-- Description -->
+              <p>
+                Dhurandhar is an action thriller movie. Experience intense drama,
+                powerful performances and thrilling action sequences.
+              </p>
+
+              <p><b>Language:</b> Hindi</p>
+              <p><b>Genre:</b> Action / Thriller</p>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="openBooking('F1')">
+                Book Tickets
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card" data-name="WAR-2" data-bs-toggle="modal" data-bs-target="#movie5Modal" data-category="movies">
+        <img src="War2.jpeg" alt="WAR-2">
+        <button>
+          <i class="fa-solid fa-thumbs-up" style="color:#22d36f">1.1M Likes</i>
+          <h5>WAR-2</h5>
+        </button>
+      </div>
+      <div class="modal fade" id="movie5Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Laalo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <!-- Trailer -->
+              <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mjBym9uKth4?si=zaakc2dT1_2qRt-S"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+
+              <br>
+
+              <!-- Description -->
+              <p>
+                Dhurandhar is an action thriller movie. Experience intense drama,
+                powerful performances and thrilling action sequences.
+              </p>
+
+              <p><b>Language:</b> Hindi</p>
+              <p><b>Genre:</b> Action / Thriller</p>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-bs-dismiss="modal" onclick="openBooking('WAR-2')">
+                Book Tickets
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- Event Booking Modal (fixed date & timing; only quantity selection) -->
+  <div class="modal fade" id="eventBookingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="eventModalTitle">Book Event</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><b>Date:</b> 2026-03-01</p>
+          <p><b>Timing:</b> 7:00 PM - ₹500</p>
+
+          <label class="form-label fw-bold">🎟 Number of Tickets:</label>
+          <select id="eventQuantity" class="form-select mb-3">
+            <option value="">-- Choose quantity --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <button class="btn btn-success w-100" onclick="completeEventBooking()">Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">💳 Payment Method</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Total Amount Display -->
+          <div class="alert alert-info mb-3">
+            <h6><b>Total Amount:</b> ₹<span id="paymentTotalAmount">0</span></h6>
+          </div>
+
+          <!-- Step 1: Payment Method Selection -->
+          <div id="paymentMethodStep">
+            <div class="alert alert-warning mb-3">
+              <strong>Wallet Balance:</strong> ₹<span id="walletBalanceDisplay">0</span>
+              <br>
+              <button class="btn btn-sm btn-outline-success mt-2" onclick="useWalletBalance()">
+                Use Wallet Amount
+              </button>
+            </div>
+
+            <label class="form-label fw-bold">Select Payment Method:</label>
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-primary" onclick="selectPaymentMethod('upi')">💳 UPI</button>
+              <button class="btn btn-outline-primary" onclick="selectPaymentMethod('debit')">💳 Debit Card</button>
+              <button class="btn btn-outline-primary" onclick="selectPaymentMethod('credit')">💳 Credit Card</button>
+              <button class="btn btn-outline-primary" onclick="selectPaymentMethod('netbanking')">🏦 Net
+                Banking</button>
+            </div>
+          </div>
+
+          <!-- Step 2: UPI Details -->
+          <div id="upiDetailsStep" style="display:none;">
+            <label class="form-label fw-bold">UPI ID:</label>
+            <input type="text" id="upiId" class="form-control mb-3" placeholder="example@upi">
+            <small class="text-muted">Valid format: name@bank (e.g., user@okhdfcbank)</small>
+            <div class="mt-3">
+              <button class="btn btn-secondary w-100 mb-2" onclick="goBackToPaymentMethod()">Back</button>
+              <button class="btn btn-success w-100" onclick="submitUpiPayment()">Proceed with UPI</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Debit/Credit Card Details -->
+          <div id="cardDetailsStep" style="display:none;">
+            <input type="text" id="cardNumber" class="form-control mb-2" placeholder="Card Number (10 digits)"
+              maxlength="10">
+            <input type="text" id="cardExpiry" class="form-control mb-2" placeholder="Expiry (MM/YY)" maxlength="5">
+            <input type="text" id="cardCVV" class="form-control mb-2" placeholder="CVV (3 digits)" maxlength="3">
+            <input type="text" id="cardPin" class="form-control mb-3" placeholder="Card PIN (4 digits)" maxlength="4">
+            <div class="mt-3">
+              <button class="btn btn-secondary w-100 mb-2" onclick="goBackToPaymentMethod()">Back</button>
+              <button class="btn btn-success w-100" onclick="submitCardPayment()">Proceed with Card</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Net Banking Details -->
+          <div id="netbankingDetailsStep" style="display:none;">
+            <input type="text" id="bankName" class="form-control mb-2" placeholder="Bank Name">
+            <input type="text" id="bankUserId" class="form-control mb-3" placeholder="Net Banking User ID">
+            <div class="mt-3">
+              <button class="btn btn-secondary w-100 mb-2" onclick="goBackToPaymentMethod()">Back</button>
+              <button class="btn btn-success w-100" onclick="submitNetBankingPayment()">Proceed with Net
+                Banking</button>
+            </div>
+          </div>
+
+          <!-- Step 3: OTP Verification (for Cards) -->
+          <div id="otpVerificationStep" style="display:none;">
+            <div class="alert alert-warning">
+              <small>OTP has been sent to your registered email: <b id="maskedEmail">user@email.com</b></small>
+            </div>
+            <input type="text" id="otpCode" class="form-control mb-3" placeholder="Enter OTP (6 digits)" maxlength="6">
+            <small class="text-muted d-block mb-3">Check the alert above for the OTP (shown after card
+              validation)</small>
+            <div class="mt-3">
+              <button class="btn btn-secondary w-100 mb-2" onclick="goBackToCardDetails()">Back</button>
+              <button class="btn btn-success w-100" onclick="verifyOtp()">Verify OTP & Complete Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theater & Timing Selection Modal -->
+  <div class="modal fade" id="theatreTimingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title">🎭 Select Theatre & Timing</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Step 1: Theatre Selection -->
+          <div id="theatreSelectionStep">
+            <h6 class="fw-bold mb-3">Select Theatre:</h6>
+            <div id="theatreListContainer" class="row g-2">
+              <!-- Theatre options will be populated by JS -->
+            </div>
+          </div>
+
+          <!-- Step 2: Timing Selection -->
+          <div id="timingSelectionStep" style="display:none;">
+            <h6 class="fw-bold mb-3">Select Timing for <span id="selectedTheatreName"></span></h6>
+            <div id="timingListContainer" class="row g-2">
+              <!-- Timing options will be populated by JS -->
+            </div>
+            <div class="mt-3">
+              <button class="btn btn-secondary" onclick="goBackToTheatreSelection()">Back to Theatres</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seat Selection Modal -->
+  <div class="modal fade" id="seatSelectionModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="seatModalTitle">💺 Select Seats</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <p id="seatMovieInfo"></p>
+          <p id="seatTimeInfo"></p>
+
+          <div id="seatLayout" style="display: grid; grid-template-columns: repeat(14, 1fr); gap: 8px; padding: 20px;">
+          </div>
+
+          <div class="mt-3 alert alert-info">
+            <small><b>Selected Seats:</b> <span id="selectedSeatsDisplay">None</span></small>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeSeatModal()">Cancel</button>
+          <button class="btn btn-danger" onclick="confirmBooking()">Confirm & Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="events" class="container">
+    <h2> Live Events </h2><br><br>
+    <div class="Event">
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#eventArijitModal" data-name="Arijit Singh"
+        data-category="events">
+        <img src="Arijit.jpeg">
+        <button>
+          <i class="fa-solid fa-thumps-up" style="color: green">60k Likes</i>
+          <h3>Arijit Singh</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#eventAdityaModal" data-name="Aditya Gadhvi"
+        data-category="events">
+        <img src="AdityaGhadvi.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">9k votes</i>
+          <h3>Aditya Gadhvi</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#eventICCModal" data-name="ICC Mens Cricket World Cup"
+        data-category="events">
+        <img src="T20.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">8k votes</i>
+          <h3>ICC Mens Cricket World Cup</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#eventAISummitModal" data-name="AI-Summit"
+        data-category="events">
+        <img src="WhatsApp Image 2026-02-18 at 2.46.02 PM.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">7.15k votes</i>
+          <h3>AI-Summit</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#eventColdplayModal" data-name="Coldplay-2026"
+        data-category="events">
+        <img src="Coldplay.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">6.75k votes</i>
+          <h3>Coldplay-2026</h3>
+        </button>
+      </div>
+    </div>
+
+    <!-- Event Modals -->
+    <div class="modal fade" id="eventArijitModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Arijit Singh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Arijit Singh live concert featuring soulful renditions and chart-topping hits.</p>
+            <p><b>Type:</b> Musical Concert</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Arijit Singh', 'liveEvent')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="eventAdityaModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Aditya Gadhvi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Aditya Gadhvi live performance with energetic folk and modern arrangements.</p>
+            <p><b>Type:</b> Live Performance</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Aditya Gadhvi', 'liveEvent')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="eventICCModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">ICC Mens Cricket World Cup</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>ICC T20 World Cup matches and tournament highlights.</p>
+            <p><b>Type:</b> Sports Event</p>
+            <p><b>Location:</b> Various</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('ICC Mens Cricket World Cup', 'liveEvent')">Book
+              Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="eventAISummitModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">AI-Summit</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>AI-Summit featuring talks from industry leaders on the future of AI.</p>
+            <p><b>Type:</b> Conference</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('AI-Summit', 'liveEvent')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="eventColdplayModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Coldplay-2026</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Coldplay live concert — expect big production, singalongs and hits.</p>
+            <p><b>Type:</b> Musical Concert</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Coldplay-2026', 'liveEvent')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div><br><br>
+
+    <h2 id="comedy"> Laughter Therapy </h2><br><br>
+    <div class="Event">
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#laughBassiModal" data-name="Anubhav Singh Bassi"
+        data-category="comedy">
+        <img src="Bassi.jpeg">
+        <button>
+          <i class="fa-solid fa-thumps-up" style="color: green">60k Likes</i>
+          <h3>Anubhav Singh Bassi</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#laughHarshModal" data-name="Harsh Gujral"
+        data-category="comedy">
+        <img src="Gujaral.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">9k votes</i>
+          <h3>Harsh Gujral</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#laughZakirModal" data-name="Zakir Khan"
+        data-category="comedy">
+        <img src="Zakir.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">8k votes</i>
+          <h3>Zakir Khan</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#laughVipulModal" data-name="Vipul"
+        data-category="comedy">
+        <img src="VipulGoyal.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">7.15k votes</i>
+          <h3>Vipul</h3>
+        </button>
+      </div>
+
+      <div class="Events" data-bs-toggle="modal" data-bs-target="#laughPranitModal" data-name="Pranit More"
+        data-category="comedy">
+        <img src="Pranit.jpeg">
+        <button>
+          <i class="fa-solid fa-star" style="color:red">6.75k votes</i>
+          <h3>Pranit More</h3>
+        </button>
+      </div>
+    </div>
+
+    <!-- Laughter Modals -->
+    <div class="modal fade" id="laughBassiModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Anubhav Singh Bassi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Anubhav Singh Bassi stand-up show — clever storytelling and observational comedy.</p>
+            <p><b>Type:</b> Stand-up Comedy</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Anubhav Singh Bassi', 'laughter')">Book
+              Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="laughHarshModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Harsh Gujral</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Harsh Gujral brings a fresh take on life and relationships with hilarious timing.</p>
+            <p><b>Type:</b> Stand-up Comedy</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Harsh Gujral', 'laughter')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="laughZakirModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Zakir Khan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Zakir Khan's witty observations and storytelling make for a memorable show.</p>
+            <p><b>Type:</b> Stand-up Comedy</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Zakir Khan', 'laughter')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="laughVipulModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Vipul</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Vipul's comedy show blends satire and punchy one-liners for a great evening.</p>
+            <p><b>Type:</b> Stand-up Comedy</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Vipul', 'laughter')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="laughPranitModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pranit More</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <p>Pranit More's special brings energetic storytelling and observational laughs.</p>
+            <p><b>Type:</b> Stand-up Comedy</p>
+            <p><b>Location:</b> Ahmedabad</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" onclick="openBooking('Pranit More', 'laughter')">Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal (Login / Sign Up) -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginTab"
+                type="button" role="tab">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signupTab" type="button"
+                role="tab">Sign Up</button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="loginTab" role="tabpanel">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="loginEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="loginPassword" required>
+                </div>
+                <div id="loginMsg" class="text-danger mb-2" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+            </div>
+
+            <div class="tab-pane fade" id="signupTab" role="tabpanel">
+              <form id="signupForm">
+                <div class="mb-3">
+                  <label for="signupName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="signupName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="signupEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupMobile" class="form-label">Mobile Number</label>
+                  <input type="tel" class="form-control" id="signupMobile" placeholder="10-digit mobile number"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupAge" class="form-label">Age</label>
+                  <input type="number" class="form-control" id="signupAge" min="1" max="120" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="signupPassword" required>
+                </div>
+                <div id="signupMsg" class="text-success mb-2" style="display:none;"></div>
+                <button type="submit" class="btn btn-success">Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="fa fa-user"></i> My Profile</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="profileContent"></div>
+
+          <div id="editProfileSection" style="display:none;">
+            <input type="text" id="editName" class="form-control mb-2" placeholder="Full Name">
+            <input type="email" id="editEmail" class="form-control mb-2" placeholder="Email">
+            <input type="tel" id="editMobile" class="form-control mb-2" placeholder="Mobile Number">
+            <input type="number" id="editAge" class="form-control mb-2" placeholder="Age">
+            <button class="btn btn-success w-100" onclick="updateProfile()">Save Changes</button>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary" onclick="enableEditProfile()">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookings Modal -->
+  <div class="modal fade" id="bookingsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title"><i class="fa fa-ticket"></i> My Bookings</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="bookingsContent">
+            <p class="text-muted">Loading bookings...</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple client-side signup/login using localStorage (no server change)
+    function getUsers() {
+      try {
+        return JSON.parse(localStorage.getItem('showbuzz_users') || '{}');
+      } catch (e) { return {}; }
+    }
+    function saveUsers(u) { localStorage.setItem('showbuzz_users', JSON.stringify(u)); }
+
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const mobile = document.getElementById('signupMobile').value.trim();
+      const age = document.getElementById('signupAge').value;
+      const pass = document.getElementById('signupPassword').value;
+      const users = getUsers();
+      if (users[email]) {
+        const msg = document.getElementById('signupMsg');
+        msg.style.display = 'block';
+        msg.className = 'text-danger mb-2';
+        msg.textContent = 'An account with this email already exists. Please login.';
+        // switch to Login tab
+        var loginTab = new bootstrap.Tab(document.querySelector('#login-tab'));
+        loginTab.show();
+        return;
+      }
+      users[email] = { password: pass, name: name, email: email, mobile: mobile, age: age };
+      saveUsers(users);
+      // Automatically login the user
+localStorage.setItem('showbuzz_currentUser', email);
+
+      const msg = document.getElementById('signupMsg');
+      msg.style.display = 'block';
+      msg.className = 'text-success mb-2';
+      msg.textContent = 'Signed up successfully. Please login.';
+      // switch to Login tab
+      var loginTab = new bootstrap.Tab(document.querySelector('#login-tab'));
+      loginTab.show();
+      // clear signup fields
+      document.getElementById('signupForm').reset();
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('loginPassword').value;
+      const users = getUsers();
+      const msg = document.getElementById('loginMsg');
+      if (users[email] && users[email].password === pass) {
+        msg.style.display = 'block';
+        msg.className = 'text-success mb-2';
+        msg.textContent = 'Login successful!';
+        // close modal after short delay
+        setTimeout(function () {
+          var modalEl = document.getElementById('authModal');
+          var modal = bootstrap.Modal.getInstance(modalEl);
+          modal.hide();
+        }, 700);
+      } else {
+        msg.style.display = 'block';
+        msg.className = 'text-danger mb-2';
+        msg.textContent = 'Invalid credentials. Please try again or sign up.';
+      }
+    });
+
+    // Open auth modal when clicking Sign In button
+    document.getElementById('signInBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      // decide where to go: signup if no users, login if users exist
+      const users = getUsers();
+      const userCount = Object.keys(users).length;
+      const current = localStorage.getItem('showbuzz_currentUser');
+
+      // clear any existing messages shown in page modal (if present)
+      const loginMsgEl = document.getElementById('loginMsg');
+      const signupMsgEl = document.getElementById('signupMsg');
+      if (loginMsgEl) loginMsgEl.style.display = 'none';
+      if (signupMsgEl) signupMsgEl.style.display = 'none';
+
+      if (current) {
+        // Already logged in, do nothing
+        return;
+      }
+
+      if (userCount === 0) {
+        location.href = 'signup.html';
+      } else {
+        location.href = 'login.html';
+      }
+    });
+
+    // Enforce signup/login before showing the home page and manage logout
+    document.addEventListener('DOMContentLoaded', function () {
+      const users = getUsers();
+      const userCount = Object.keys(users).length;
+      const current = localStorage.getItem('showbuzz_currentUser');
+
+      // If no users exist, require signup first
+      if (userCount === 0) {
+        if (!location.pathname.endsWith('signup.html')) {
+          location.href = 'signup.html';
+          return;
+        }
+      } else if (!current) {
+        // Users exist but not logged in -> go to login
+        if (!location.pathname.endsWith('login.html')) {
+          location.href = 'login.html';
+          return;
+        }
+      } else {
+        // Logged in - hide the sign in button
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) {
+          signInBtn.style.display = 'none';
+        }
+      }
+    });
+  </script>
+  <div class="modal fade" id="bookingSummaryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content shadow-lg rounded-4">
+
+        <!-- HEADER -->
+        <div class="modal-header bg-success text-white rounded-top-4">
+          <h5 class="modal-title">🎟 Booking Confirmed</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- BODY -->
+        <div class="modal-body">
+
+          <!-- Booking details injected by JS -->
+          <div id="bookingSummaryContent"></div>
+
+          <!-- QR CODE SECTION -->
+          <div class="text-center mt-3">
+            <h6 class="fw-bold">🎫 Scan QR Code at Theatre</h6>
+            <div id="qrCode" class="d-flex justify-content-center mt-2"></div>
+          </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="modal-footer justify-content-between">
+
+          <button class="btn btn-success px-4" data-bs-dismiss="modal">
+            Done
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div id="about" class="footer-section">
+        <h3>About ShowBuzz</h3>
+        <p>Your ultimate destination for booking movie tickets, live events, and entertainment experiences. We bring the
+          best shows right to your fingertips.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="#movies">Movies</a>
+        <a href="#events">Live Events</a>
+        <a href="#comedy">Comedy Shows</a>
+        <a href="#about">About Us</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <div class="contact-item">
+          <i class="fa fa-envelope"></i>
+          <span>support@showbuzz.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-phone"></i>
+          <span>+91 1800-123-4567</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-map-marker"></i>
+          <span>Ahmedabad, Gujarat, India</span>
+        </div>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+          <a href="#" title="YouTube"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 ShowBuzz. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" title="Back to top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Scroll to Top functionality
+    const scrollBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('show');
+      } else {
+        scrollBtn.classList.remove('show');
+      }
+    });
+
+    scrollBtn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Handle location change with persistence
+    document.addEventListener('DOMContentLoaded', function () {
+      const locationSelect = document.querySelector('select.loc');
+      if (locationSelect) {
+        // Restore previously selected city
+        const savedLocation = localStorage.getItem('selectedCity');
+        if (savedLocation) {
+          locationSelect.value = savedLocation;
+        } else {
+          // Save default city on first load
+          localStorage.setItem('selectedCity', locationSelect.value);
+        }
+
+        // Listen for changes and save before reload
+        locationSelect.addEventListener('change', function () {
+          localStorage.setItem('selectedCity', this.value);
+          location.reload();
+        });
+      }
+    });
+
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+
+    if (hamburgerBtn && hamburgerMenu) {
+      hamburgerBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        hamburgerMenu.classList.toggle('active');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!hamburgerMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+          hamburgerMenu.classList.remove('active');
+        }
+      });
+
+      // My Profile button functionality
+      const profileMenuItems = document.querySelectorAll('.menu-item');
+      profileMenuItems.forEach(item => {
+        if (item.textContent.includes('My Profile')) {
+          item.addEventListener('click', function (e) {
+            e.preventDefault();
+            showProfile();
+            let profileModal = new bootstrap.Modal(document.getElementById('profileModal'));
+            profileModal.show();
+          });
+        }
+        if (item.textContent.includes('My Bookings')) {
+          item.addEventListener('click', function (e) {
+            e.preventDefault();
+            showBookings();
+            let bookingsModal = new bootstrap.Modal(document.getElementById('bookingsModal'));
+            bookingsModal.show();
+          });
+        }
+        if (item.textContent.includes('Help & Support')) {
+          item.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'help.html';
+          });
+        }
+      });
+
+      // Logout button functionality
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (confirm('Do you want to logout?')) {
+            localStorage.removeItem('showbuzz_currentUser');
+            location.href = 'login.html';
+          }
+        });
+      }
+
+      // Close menu when a menu item is clicked
+      const menuItems = hamburgerMenu.querySelectorAll('.menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+          hamburgerMenu.classList.remove('active');
+        });
+      });
+    }
+
+    // Show user profile in modal
+    function showProfile() {
+      const currentUser = localStorage.getItem('showbuzz_currentUser');
+      if (!currentUser) {
+        document.getElementById('profileContent').innerHTML = '<p class="text-danger">Please login first.</p>';
+        return;
+      }
+
+      const users = getUsers();
+      const user = users[currentUser];
+
+      if (user) {
+        const profileHTML = `
+                    <div class="profile-details">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Name:</label>
+                            <p class="form-control-plaintext">${user.name || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Email:</label>
+                            <p class="form-control-plaintext">${user.email || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Mobile Number:</label>
+                            <p class="form-control-plaintext">${user.mobile || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Age:</label>
+                            <p class="form-control-plaintext">${user.age || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+    <label class="form-label fw-bold">Wallet Balance:</label>
+    <p class="form-control-plaintext text-success">
+        ₹${user.wallet || 0}
+    </p>
+</div>
+
+                    </div>
+                `;
+        document.getElementById('profileContent').innerHTML = profileHTML;
+      } else {
+        document.getElementById('profileContent').innerHTML = '<p class="text-danger">User not found.</p>';
+      }
+    }
+
+    // Show user bookings in modal
+    function showBookings() {
+      const currentUser = localStorage.getItem('showbuzz_currentUser');
+      if (!currentUser) {
+        document.getElementById('bookingsContent').innerHTML = '<p class="text-danger">Please login first.</p>';
+        return;
+      }
+
+      try {
+        const bookings = JSON.parse(localStorage.getItem('showbuzz_bookings') || '{}');
+        const userBookings = bookings[currentUser] || [];
+
+        if (userBookings.length === 0) {
+          document.getElementById('bookingsContent').innerHTML = '<p class="text-muted">No bookings found. Start booking now!</p>';
+          return;
+        }
+
+        let bookingsHTML = '<div class="bookings-list">';
+        userBookings.forEach((booking, index) => {
+          bookingsHTML += `
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">${booking.movie || booking.event}</h5>
+    <p class="card-text">
+        <strong>Theatre:</strong> ${booking.theatre}<br>
+        <strong>Date:</strong> ${booking.date}<br>
+        <strong>Time:</strong> ${booking.time}<br>
+        <strong>Seats:</strong> ${booking.seats.join(', ')}<br>
+        <strong>Tickets:</strong> ${booking.quantity}<br>
+        <strong>Total Amount:</strong> ₹${booking.totalAmount}<br>
+        <strong>Booking Date:</strong> ${booking.bookingDate}
+    </p>
+
+    <button class="btn btn-danger btn-sm"
+        onclick="cancelBooking(${index})">
+        ❌ Cancel Booking ❌
+    </button>
+
+    <span class="badge bg-success ms-2">Confirmed</span>
+  </div>
+</div>
+`;
+
+        });
+        bookingsHTML += '</div>';
+        document.getElementById('bookingsContent').innerHTML = bookingsHTML;
+      } catch (e) {
+        document.getElementById('bookingsContent').innerHTML = '<p class="text-danger">Error loading bookings.</p>';
+      }
+    }
+    // 🔍 SEARCH FUNCTION
+    document.getElementById("searchInput").addEventListener("input", function () {
+
+      const searchValue = this.value.toLowerCase();
+      const allItems = document.querySelectorAll("[data-name]");
+
+      let foundCategory = null;
+
+      allItems.forEach(item => {
+
+        const itemName = item.getAttribute("data-name").toLowerCase();
+
+        if (itemName.includes(searchValue)) {
+          item.style.display = "";
+
+          // Store first matched category
+          if (!foundCategory) {
+            foundCategory = item.getAttribute("data-category");
+          }
+
+        } else {
+          item.style.display = "none";
+        }
+
+      });
+
+      // Auto scroll to matching section
+      if (foundCategory && searchValue !== "") {
+
+        const section = document.getElementById(foundCategory);
+
+        if (section) {
+          section.scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      }
+
+    });
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+
+      const searchValue = this.value.toLowerCase();
+      const allItems = document.querySelectorAll("[data-name]");
+      let found = false;
+
+      allItems.forEach(item => {
+
+        const itemName = item.getAttribute("data-name").toLowerCase();
+
+        if (itemName.includes(searchValue)) {
+          item.style.display = "";
+          found = true;
+        } else {
+          item.style.display = "none";
+        }
+
+      });
+
+      let msg = document.getElementById("noResults");
+
+      if (!found && searchValue !== "") {
+        if (!msg) {
+          let message = document.createElement("h4");
+          message.id = "noResults";
+          message.innerText = "No Results Found";
+          message.style.textAlign = "center";
+          message.style.color = "red";
+          document.body.appendChild(message);
+        }
+      } else {
+        if (msg) msg.remove();
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>

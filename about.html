@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ShowBuzz - Your Entertainment Destination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .about-header {
+            background: linear-gradient(135deg, #f84464 0%, #e53353 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .about-header p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #f84464;
+            border-radius: 2px;
+        }
+
+        .mission-section {
+            background: #f9f9f9;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .mission-card i {
+            font-size: 48px;
+            color: #f84464;
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .mission-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(248, 68, 100, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 36px;
+            color: #f84464;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .why-choose-section {
+            background: #f9f9f9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #f84464;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #f84464 0%, #e53353 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: white;
+            color: #f84464;
+            padding: 12px 40px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #f0f0f0;
+        }
+
+        .team-section {
+            text-align: center;
+        }
+
+        .team-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .team-item i {
+            font-size: 64px;
+            color: #f84464;
+            margin-bottom: 15px;
+        }
+
+        .team-item h4 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .value-proposition {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .value-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #f84464;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .value-item h5 {
+            color: #f84464;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .navbar-about {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-home {
+            color: #f84464;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-home:hover {
+            color: #e53353;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav_bar navbar-about">
+        <div class="left">
+            <a href="main.html" style="text-decoration:none; display:inline-block;">
+                <img src="SHOWBUZZ.jpeg" alt="ShowBuzz" style="height:36px; margin-left:8px; vertical-align:middle; cursor:pointer;">
+            </a>
+        </div>
+        <div class="right">
+            <a href="main.html" class="back-home"><i class="fa fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="about-header">
+        <h1><i class="fa fa-star"></i> About ShowBuzz</h1>
+        <p>Your ultimate destination for booking movie tickets, live events, and entertainment experiences. Making entertainment accessible to everyone.</p>
+    </div>
+
+    <!-- Mission & Vision Section -->
+    <div class="section mission-section">
+        <h2 class="section-title"><i class="fa fa-target"></i> Our Mission & Vision</h2>
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mission-card">
+                        <i class="fa fa-eye"></i>
+                        <h3>Our Vision</h3>
+                        <p>To become India's most trusted and user-friendly entertainment booking platform, making it effortless for millions to discover, book, and enjoy their favorite movies, shows, and live events.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mission-card">
+                        <i class="fa fa-heart"></i>
+                        <h3>Our Mission</h3>
+                        <p>To revolutionize the entertainment booking experience by providing a seamless, secure, and delightful platform that connects audiences with world-class entertainment venues and events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose ShowBuzz Section -->
+    <div class="section why-choose-section">
+        <h2 class="section-title"><i class="fa fa-check-circle"></i> Why Choose ShowBuzz?</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa fa-bolt"></i>
+                    <h4>Lightning Fast</h4>
+                    <p>Book your tickets in seconds with our optimized platform. Quick checkout and instant e-ticket generation.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-shield-alt"></i>
+                    <h4>100% Secure</h4>
+                    <p>Your data and payments are protected with industry-leading encryption and security protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <h4>Multi-City Coverage</h4>
+                    <p>Access entertainment options across multiple cities - Ahmedabad, Mumbai, Delhi, Bangalore, Pune, Chennai, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-credit-card"></i>
+                    <h4>Multiple Payment Options</h4>
+                    <p>Pay with credit cards, debit cards, UPI, net banking, and digital wallets - whatever works for you.</p>
+                </div>
+                <!-- <div class="feature-card">
+                    <i class="fa fa-mobile-alt"></i>
+                    <h4>Mobile Friendly</h4>
+                    <p>Responsive design works seamlessly on all devices. Manage your bookings from anywhere, anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-star"></i>
+                    <h4>Best Deals & Offers</h4>
+                    <p>Get exclusive discounts, early-bird offers, and special promotions on your favorite entertainments.</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- What We Offer Section -->
+    <div class="section">
+        <h2 class="section-title"><i class="fa fa-ticket-alt"></i> What We Offer</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="value-proposition">
+                <div class="value-item">
+                    <h5><i class="fa fa-film"></i> Movies</h5>
+                    <p>Book tickets for the latest blockbusters, family entertainers, and classic films across multiple theatres and show timings.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fa fa-laugh"></i> Stand-up Comedy</h5>
+                    <p>Laugh out loud with performances from the best comedians and comedy shows in your city.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fa fa-music"></i> Live Events</h5>
+                    <p>Experience concerts, theatre shows, music festivals, and special events from renowned artists and performers.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fa fa-chair"></i> Seat Selection</h5>
+                    <p>Choose your preferred seats from an interactive theatre layout. Pick the best seats for your viewing experience.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fa fa-receipt"></i> Digital E-Tickets</h5>
+                    <p>Instant e-ticket generation with QR codes. No printing required - just show your phone at the entrance.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fa fa-history"></i> Booking History</h5>
+                    <p>Keep track of all your bookings and past events in one place. Easy reference and management.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="section why-choose-section">
+        <h2 class="section-title">Our Impact</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Movies & Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Partner Theatres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Cities Covered</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div class="cta-section">
+            <h2>Ready to Book Your Entertainment?</h2>
+            <p>Start exploring amazing movies, shows, and live events today!</p>
+            <a href="main.html"><button class="cta-button">Explore Now</button></a>
+        </div>
+    </div>
+
+    <!-- Core Values Section -->
+    <div class="section">
+        <h2 class="section-title"><i class="fa fa-compass"></i> Our Core Values</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fa fa-handshake"></i>
+                        <h3>Customer First</h3>
+                        <p>We prioritize customer satisfaction and strive to provide the best booking experience every time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fa fa-lock"></i>
+                        <h3>Trust & Security</h3>
+                        <p>Your information and transactions are safe with us. We maintain the highest security standards.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fa fa-rocket"></i>
+                        <h3>Innovation</h3>
+                        <p>We continuously innovate to bring you the latest features and the best user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section why-choose-section">
+        <h2 class="section-title"><i class="fa fa-phone-alt"></i> Get in Touch</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 16px; color: #666; margin-bottom: 30px;">Have questions? We'd love to hear from you. Reach out to our support team.</p>
+            <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="margin: 15px 0;">
+                    <i class="fa fa-envelope" style="color: #f84464; font-size: 20px;"></i>
+                    <p style="margin: 10px 0; color: #666;"><strong>Email:</strong> support@showbuzz.com</p>
+                </div>
+                <div style="margin: 15px 0;">
+                    <i class="fa fa-phone" style="color: #f84464; font-size: 20px;"></i>
+                    <p style="margin: 10px 0; color: #666;"><strong>Phone:</strong> +91 9638699741</p>
+                </div>
+                <div style="margin: 15px 0;">
+                    <i class="fa fa-clock" style="color: #f84464; font-size: 20px;"></i>
+                    <p style="margin: 10px 0; color: #666;"><strong>Hours:</strong> Monday - Sunday, 9 AM - 11 PM IST</p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <!-- <a href="#" style="color: #f84464; margin: 0 10px; font-size: 20px;"><i class="fa fa-facebook"></i></a>
+                    <a href="#" style="color: #f84464; margin: 0 10px; font-size: 20px;"><i class="fa fa-twitter"></i></a>
+                    <a href="#" style="color: #f84464; margin: 0 10px; font-size: 20px;"><i class="fa fa-instagram"></i></a>
+                    <a href="#" style="color: #f84464; margin: 0 10px; font-size: 20px;"><i class="fa fa-youtube"></i></a>
+                </div> -->
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ShowBuzz</h3>
+                <p>Your ultimate destination for booking movie tickets, live events, and entertainment experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="main.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="help.html">Help & Support</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item" style="color: #666;">
+                    <i class="fa fa-envelope"></i>
+                    <span>support@showbuzz.com</span>
+                </div>
+                <div class="contact-item" style="color: #666;">
+                    <i class="fa fa-phone"></i>
+                    <span>+91 9638699741</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShowBuzz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
